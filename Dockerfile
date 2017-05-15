@@ -17,3 +17,6 @@ RUN echo http://dl-6.alpinelinux.org/alpine/edge/community >> /etc/apk/repositor
 # Install development packages
 RUN apk add --no-cache --update bash curl git openssh docker && \
     rm -rf /var/cache/apk/*
+
+# Install Node.js packages
+RUN yarn global add conventional-github-releaser
