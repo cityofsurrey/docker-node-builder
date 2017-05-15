@@ -15,5 +15,5 @@ ENV PATH $PATH:/opt/yarn/bin/
 RUN echo http://dl-6.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
 
 # Install development packages
-RUN apk add --no-cache --update bash curl git openssh && \
+RUN apk add --no-cache --update bash curl git openssh docker && \
     rm -rf /var/cache/apk/*
