@@ -19,4 +19,6 @@ RUN apk add --no-cache --update bash curl git openssh docker && \
     rm -rf /var/cache/apk/*
 
 # Install Node.js packages
-RUN yarn global add conventional-github-releaser
+RUN yarn global add \
+    conventional-github-releaser \
+    snyk
