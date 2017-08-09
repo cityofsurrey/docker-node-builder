@@ -21,4 +21,6 @@ RUN apk add --no-cache --update bash curl git openssh docker && \
 # Install Node.js packages
 RUN yarn global add \
     conventional-github-releaser \
-    snyk
+    snyk \
+    landscape-node \
+    bunyan
