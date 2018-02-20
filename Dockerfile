@@ -1,7 +1,7 @@
-FROM node:7-alpine
+FROM node:9-alpine
 
 ENV NPM_CONFIG_LOGLEVEL error
-ENV YARN_VERSION 0.27.5
+ENV YARN_VERSION 1.3.2
 
 # Install Yarn
 ADD https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v${YARN_VERSION}.tar.gz /opt/yarn.tar.gz
