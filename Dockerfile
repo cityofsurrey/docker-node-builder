@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:7-alpine
 
 ENV NPM_CONFIG_LOGLEVEL error
 ENV YARN_VERSION 1.3.2
