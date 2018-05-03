@@ -1,4 +1,4 @@
-FROM node:10.0.0
+FROM node:10.0.0-alpine
 
 ENV NPM_CONFIG_LOGLEVEL error
 ENV YARN_VERSION 0.27.5
