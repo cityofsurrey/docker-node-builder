@@ -1,4 +1,4 @@
-FROM node:10.0.0-alpine
+FROM node:9.10.0-alpine
 
 # Add Docker repository
 RUN echo http://dl-6.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
