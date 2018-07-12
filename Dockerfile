@@ -13,3 +13,5 @@ RUN yarn global add \
     snyk \
     landscape-node \
     bunyan
+
+RUN yarn config set ignore-engines true
