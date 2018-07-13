@@ -1,2 +1,2 @@
 # docker-node-builder
-Docker image for building Node.js apps
+Docker node builder is a docker image generating containers for building Node.js apps.
