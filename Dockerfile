@@ -1,16 +1,26 @@
-FROM node:10.0.0-alpine
-
-# Add Docker repository
-RUN echo http://dl-6.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories
+FROM node:11.0.0-alpine
 
 # Install development packages
-RUN apk add --no-cache --update bash curl git openssh docker && \
+RUN apk add --no-cache --update bash curl git openssh docker jq make && \
     rm -rf /var/cache/apk/*
+
+# Install AWS CLI
+RUN apk --no-cache update && \
+    apk --no-cache add python py-pip py-setuptools ca-certificates groff less && \
+    pip --no-cache-dir install awscli && \
+    rm -rf /var/cache/apk/*
+
+# Install Docker Compose
+RUN pip --no-cache-dir install docker-compose && \
+    rm -rf /var/cache/apk/*
+
+# Install ECS Deploy
+RUN curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | tee -a /usr/bin/ecs-deploy && \
+    chmod +x /usr/bin/ecs-deploy
 
 # Install Node.js packages
 RUN yarn global add \
-    conventional-github-releaser@1.1.10 --ignore-engines \
-    snyk \
+    conventional-github-releaser \
     landscape-node \
     bunyan
 
