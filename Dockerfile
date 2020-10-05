@@ -1,26 +1,20 @@
-FROM node:13-alpine
+FROM node:14.12.0-alpine3.12
 
-# Install development packages
+# Install core packages
 RUN apk add --no-cache --update bash curl git openssh docker jq make && \
     rm -rf /var/cache/apk/*
 
-# Install AWS CLI
-RUN apk --no-cache update && \
-    apk --no-cache add python py-pip py-setuptools ca-certificates groff less && \
-    pip --no-cache-dir install awscli && \
-    rm -rf /var/cache/apk/*
+# Install Python and PIP
+RUN \
+    apk add --no-cache --virtual=build gcc libffi-dev musl-dev openssl-dev python3-dev make && \
+    apk add --no-cache py3-pip
 
 # Install Docker Compose
 RUN pip --no-cache-dir install docker-compose && \
     rm -rf /var/cache/apk/*
 
-# Install ECS Deploy
-RUN curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | tee -a /usr/bin/ecs-deploy && \
-    chmod +x /usr/bin/ecs-deploy
-
 # Install Node.js packages
 RUN yarn global add \
-    conventional-github-releaser \
     landscape-node \
     bunyan
 
