@@ -6,11 +6,12 @@ RUN apk add --no-cache --update bash curl git openssh docker jq make && \
 
 # Install Python and PIP
 RUN \
-    apk add --no-cache --virtual=build gcc libffi-dev musl-dev openssl-dev python3-dev make && \
-    apk add --no-cache py3-pip
+    apk add --no-cache docker-cli python3 && \
+    apk add --no-cache --virtual .docker-compose-deps python3-dev libffi-dev openssl-dev gcc libc-dev
 
 # Install Docker Compose
-RUN pip --no-cache-dir install docker-compose && \
+RUN pip3 --no-cache-dir install docker-compose && \
+    apk del .docker-compose-deps && \
     rm -rf /var/cache/apk/*
 
 # Install Node.js packages
