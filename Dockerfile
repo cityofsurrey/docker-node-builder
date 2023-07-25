@@ -6,7 +6,6 @@ RUN apk add --no-cache --update bash curl git openssh docker docker-compose jq m
 
 # Install Node.js packages
 RUN yarn global add \
-    landscape-node \
     bunyan
 
 RUN yarn config set ignore-engines true
