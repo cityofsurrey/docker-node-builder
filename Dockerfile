@@ -1,4 +1,4 @@
-FROM node:18.10.0-alpine
+FROM node:20.5.0-alpine
 
 # Install core packages
 RUN apk add --no-cache --update bash curl git openssh docker jq make && \
